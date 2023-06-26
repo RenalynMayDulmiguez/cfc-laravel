@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->foreignIdFor(User::class)->constrained();
             $table->string('title')->nullable(false);
             $table->string('body');
-            $table->string('status');
+            $table->boolean('status')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

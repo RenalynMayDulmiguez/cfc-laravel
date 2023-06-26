@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\Task;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<User>
+ * @extends Factory<Task>
  */
-class UserFactory extends Factory
+class TaskFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,14 +17,12 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+
         return [
-            'username' => fake()->username(),
-            'password' => 'password',
+            'user_id' => 1,
+            'title' => fake()->title,
+            'body' => fake()->word(),
+            'status' => 0
         ];
     }
-
-    /**
-     * Indicate that the model's email address should be unverified.
-     */
-
 }

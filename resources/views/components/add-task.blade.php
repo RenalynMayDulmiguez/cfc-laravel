@@ -1,4 +1,4 @@
-<form class="modal fade" id="addTask">
+<form method="POST" action="{{ route('store') }}" class="modal fade" id="addTask">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -17,8 +17,10 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </div>
         </div>
     </div>
 </form>
+
+
