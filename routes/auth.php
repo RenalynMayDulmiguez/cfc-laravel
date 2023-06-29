@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,8 +29,18 @@ Route::middleware('auth')->group(function () {
 
         Route::name('task.')->group(function () {
             Route::delete('delete', 'delete')->name('delete');
+            Route::post('update', 'update')->name('update');
             Route::prefix('{task}')->group(function () {
                 Route::patch('updateStatus', 'updateStatus')->name('updateStatus');
+            });
+        });
+    });
+
+    Route::controller(CommentController::class)->prefix('comment')->group(function () {
+        Route::name('comment.')->group(function () {
+            Route::post('store', 'store')->name('store');
+            Route::prefix('{comment}')->group(function () {
+                Route::get('show', 'show')->name('show');
             });
         });
     });
