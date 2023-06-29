@@ -1,4 +1,5 @@
 <form method="POST" action="{{ route('store') }}" class="modal fade" id="addTask">
+    @csrf
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

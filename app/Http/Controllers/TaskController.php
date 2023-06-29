@@ -9,7 +9,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Task::with(['comment'])->get();
         return view('welcome', compact('tasks'));
     }
 
@@ -38,10 +38,20 @@ class TaskController extends Controller
         return $task;
     }
 
+    public function update(Request $request)
+    {
+        $task = Task::query()->find($request->taskId);
+        $task->update([
+            'title' => $request->title,
+            'body' => $request->body,
+        ]);
+        return redirect()->back();
+    }
+
     public function delete(Request $request)
     {
-        $id = Task::find($request->taskId)->get();
-        $id->first()->delete();
+        $task = Task::find($request->taskId);
+        $task->first()->delete();
         return to_route('index');
     }
 }
